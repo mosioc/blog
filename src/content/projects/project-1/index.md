@@ -16,10 +16,10 @@ It is primarily Astro, Tailwind and Typescript, with a very small amount of Soli
 
 <div class="flex gap-2">
   <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/deploy_vercel.svg" />
+    <img src="/blog/deploy_vercel.svg" />
   </a>
   <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/deploy_netlify.svg" />
+    <img src="/blog/deploy_netlify.svg" />
   </a>
 </div>
 
