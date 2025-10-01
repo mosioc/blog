@@ -7,6 +7,8 @@ import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -68,7 +70,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Latest posts
           </h5>
-          <Link href="/blog">
+          <Link href={`${baseUrl}blog/`}>
             See all posts
           </Link>
         </div>
@@ -86,7 +88,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Work Experience
           </h5>
-          <Link href="/work">
+          <Link href={`${baseUrl}work/`}>
             See all work
           </Link>
         </div>
@@ -115,7 +117,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Recent projects
           </h5>
-          <Link href="/projects">
+          <Link href={`${baseUrl}projects/`}>
             See all projects
           </Link>
         </div>
