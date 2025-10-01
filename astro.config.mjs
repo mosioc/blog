@@ -5,6 +5,6 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://mosioc.github.io/blog/",
-  base: "/blog/",
+  // base: "/blog/",
   integrations: [mdx(), sitemap(), tailwind()],
 });
