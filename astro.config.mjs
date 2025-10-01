@@ -4,8 +4,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://mosioc.github.io/blog/",
-  // base: "/blog/",
-  // trailingSlash: "always",
+  site: "https://mosioc.github.io",
+  base: "/blog",
+  trailingSlash: "always",
   integrations: [mdx(), sitemap(), tailwind()],
 });
