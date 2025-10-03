@@ -30,80 +30,279 @@ const work = await Promise.all(
   })
 );
 
+// Get education entries (with fallback data)
+const alleducation = (await getCollection("education").catch(() => []))
+  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
+
+const education = await Promise.all(
+  alleducation.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+
+// Get research entries (with fallback data)
+const allresearch = (await getCollection("research").catch(() => []))
+  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
+
+const research = await Promise.all(
+  allresearch.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+
 ---
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+{// default title: {HOME.TITLE} }
+<PageLayout title="Mosioc" description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
-      Hey! <span class="text-xl">👋🏻</span> 
-    </h4>
-    <div class="space-y-16">
-      <section>
-        <article class="space-y-4">
-          <p class="animate">
-            I’m Mehdi Maleki, a computer science enthusiast passionate about AI, Design and building interactive tech experiences.
-            I love exploring innovative solutions, optimizing code, and sharing insights through projects and articles that bridge gaming and technology.
+    <div class="space-y-10">
+      <!-- Header Section -->
+      <section class="animate">
+        <h1 class="font-bold text-3xl text-black dark:text-white mb-2">
+          Mehdi Maleki
+        </h1>
+        <p class="text-lg opacity-75 mb-4">
+          Computer Science Enthusiast | AI & Design Passionate
+        </p>
+        <article class="space-y-3">
+          <p>
+            Computer science enthusiast passionate about AI, Design and building interactive tech experiences.
+            I love exploring innovative solutions, optimizing code, and sharing insights through projects 
+            and articles that bridge gaming and technology.
           </p>
         </article>
       </section>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href={`${baseUrl}blog/`}>
-            See all posts
-          </Link>
+      <!-- Education Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Education
+          </h2>
         </div>
-        <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
+        {education.length > 0 ? (
+          <ul class="space-y-6">
+            {education.map(entry => (
+              <li class="space-y-1">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="font-semibold text-black dark:text-white">
+                      {entry.data.institution}
+                    </div>
+                    <div class="text-sm opacity-75">
+                      {entry.data.degree}
+                    </div>
+                  </div>
+                  <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                    {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                  </div>
+                </div>
+                <article class="text-sm opacity-90 pt-1">
+                  <entry.Content />
+                </article>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul class="space-y-6">
+            <li class="space-y-1">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="font-semibold text-black dark:text-white">
+                    Qazvin Islamic Azad University (QIAU)
+                  </div>
+                  <div class="text-sm opacity-75">
+                    B.Sc. in Computer Engineering
+                  </div>
+                  <div class="text-sm opacity-75 mt-1">
+                    GPA 3.76 | Class rank 4/586
+                  </div>
+                </div>
+                <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                  Sept. 2021 – Jun 2025
+                </div>
+              </div>
             </li>
-          ))}
-        </ul>
+          </ul>
+        )}
       </section>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href={`${baseUrl}work/`}>
-            See all work
-          </Link>
+      <!-- Interests Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Interests
+          </h2>
         </div>
-        <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
-            <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+        <article>
+          <p class="text-sm">
+            Machine Learning, Computer Vision
+          </p>
+        </article>
+      </section>
+
+      <!-- Research & Teaching Experience Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Research & Teaching Experience
+          </h2>
+        </div>
+        {research.length > 0 ? (
+          <ul class="space-y-6">
+            {research.map(entry => (
+              <li class="space-y-1">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="font-semibold text-black dark:text-white">
+                      {entry.data.institution}
+                    </div>
+                    <div class="text-sm opacity-75">
+                      {entry.data.role}
+                    </div>
+                  </div>
+                  <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                    {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                  </div>
+                </div>
+                <article class="text-sm opacity-90 pt-1">
+                  <entry.Content />
+                </article>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul class="space-y-6">
+            <li class="space-y-1">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="font-semibold text-black dark:text-white">
+                    Qazvin Islamic Azad University (QIAU)
+                  </div>
+                  <div class="text-sm opacity-75">
+                    Research & Teaching Assistant
+                  </div>
+                </div>
+                <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                  Sept. 2021 – Jun. 2025
+                </div>
               </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
+              <article class="text-sm opacity-90 pt-1">
+                <div class="space-y-3">
+                  <div>
+                    <div class="font-medium text-sm mb-1">Research</div>
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>Research Assistant - Operating Systems - Prof. Azadeh Pourkabirian - Winter 2024</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="font-medium text-sm mb-1">Teaching</div>
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>Teaching Assistant - Operating Systems - Prof. Azadeh Pourkabirian - Winter 2024</li>
+                    </ul>
+                  </div>
+                </div>
               </article>
             </li>
-          ))}
-        </ul>
+          </ul>
+        )}
       </section>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href={`${baseUrl}projects/`}>
-            See all projects
+      <!-- Work Experience Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Work Experience
+          </h2>
+          <Link href={`${baseUrl}work/`} class="text-sm">
+            See all
           </Link>
         </div>
-        <ul class="flex flex-col gap-4">
+        {work.length > 0 ? (
+          <ul class="space-y-6">
+            {work.map(entry => (
+              <li class="space-y-1">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="font-semibold text-black dark:text-white">
+                      {entry.data.company}
+                    </div>
+                    <div class="text-sm opacity-75">
+                      {entry.data.role}
+                    </div>
+                  </div>
+                  <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                    {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                  </div>
+                </div>
+                <article class="text-sm opacity-90 pt-1">
+                  <entry.Content />
+                </article>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul class="space-y-6">
+            <li class="space-y-1">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="font-semibold text-black dark:text-white">
+                    Alpha Co.
+                  </div>
+                  <div class="text-sm opacity-75">
+                    Co-Founder
+                  </div>
+                </div>
+                <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                  June 2024 – Present
+                </div>
+              </div>
+              <article class="text-sm opacity-90 pt-1">
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Co-founded startup specializing in adjustable dipping containers, optimizing buffalo wing dining experience.</li>
+                  <li>Developed minimum viable product (MVP) capable of early-stage revenue generation.</li>
+                  <li>Received positive feedback from established brands like Buffalo Wild Wings for innovative sauce holder designs.</li>
+                </ul>
+              </article>
+            </li>
+            <li class="space-y-1">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="font-semibold text-black dark:text-white">
+                    Private Math Tutor
+                  </div>
+                  <div class="text-sm opacity-75">
+                    Team Captain
+                  </div>
+                </div>
+                <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                  Sept. 2021 – Present
+                </div>
+              </div>
+              <article class="text-sm opacity-90 pt-1">
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Provided personalized tutoring sessions in algebra, calculus, and geometry to elementary & middle-school students.</li>
+                  <li>Developed lesson plans for diverse learning styles, leading to improvements by upwards of 1.5 letter grades.</li>
+                </ul>
+              </article>
+            </li>
+          </ul>
+        )}
+      </section>
+
+      <!-- Projects Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Projects
+          </h2>
+          <Link href={`${baseUrl}projects/`} class="text-sm">
+            See all
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-3">
           {projects.map(project => (
             <li>
               <ArrowCard entry={project} />
@@ -112,6 +311,26 @@ const work = await Promise.all(
         </ul>
       </section>
 
+      <!-- Blog Posts Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Latest Posts
+          </h2>
+          <Link href={`${baseUrl}blog/`} class="text-sm">
+            See all
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-3">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Contact Section -->
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">
           Let's Connect
