@@ -1,4 +1,4 @@
-# Personal Portfolio & Blog 
+# Personal Astro Portfolio & Blog 
 
 This document explains the structure, configuration, and extensibility of the project. This project is based on:
 https://github.com/markhorn-dev/astro-nano
