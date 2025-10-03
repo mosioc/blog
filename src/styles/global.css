@@ -49,10 +49,33 @@ article {
     @apply decoration-black/15 dark:decoration-white/30;
     @apply transition-colors duration-300 ease-in-out;
   }
+
   article a:hover {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
   }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-pink-500 via-blue-500 to-purple-500 bg-[length:400%_400%] bg-clip-text text-transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
+  /* .dark .gradient-text {
+    @apply from-indigo-400 via-purple-500 to-pink-500;
+  } */
+
+  @keyframes gradient-shift {
+
+    0%,
+    100% {
+      @apply bg-[position:0%_50%];
+    }
+
+    50% {
+      @apply bg-[position:100%_50%];
+    }
+  }
+
 }
 
 .animate {
