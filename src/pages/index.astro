@@ -54,6 +54,16 @@ const research = await Promise.all(
       return { ...item, Content };
     })
 );
+
+// Publications collection
+const publications = await Promise.all(
+  (await getCollection("publications"))
+    .sort((a, b) => b.data.status.localeCompare(a.data.status)) // Sort by status (e.g., Under Review first, then dates)
+    .map(async (item) => {
+      const { Content } = await item.render();
+      return { ...item, Content };
+    })
+);
 ---
 
 <PageLayout title="Mosioc" description={HOME.DESCRIPTION}>
@@ -210,6 +220,60 @@ const research = await Promise.all(
             </li>
           </ul>
         )}
+      </section>
+
+      <!-- Publications Section -->
+      <section class="animate space-y-4">
+        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+          <h2 class="font-bold text-xl text-black dark:text-white">
+            Publications
+          </h2>
+        </div>
+        {publications.length > 0 ? (
+          <ul class="space-y-6">
+            {publications.map(entry => (
+              <li class="space-y-1">
+                <div class="font-semibold text-black dark:text-white">
+                  {entry.data.title}
+                </div>
+                <div class="text-sm opacity-75">
+                  {entry.data.status}
+                </div>
+                <article class="text-sm opacity-90 pt-1 italic">
+                  <entry.Content />
+                </article>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul class="space-y-6">
+            <li class="space-y-1">
+              <div class="font-semibold text-black dark:text-white">
+                Localizing Knowledge in Diffusion Transformers
+              </div>
+              <div class="text-sm opacity-75">
+                Under Review
+              </div>
+              <article class="text-sm opacity-90 pt-1 italic">
+                A Zarei, S Basu, K Rezaei, Z Lin, S Nag, S Feizi
+              </article>
+            </li>
+            <li class="space-y-1">
+              <div class="font-semibold text-black dark:text-white">
+                Enhancing Epileptic Seizure Detection with EEG Feature Embeddings
+              </div>
+              <div class="text-sm opacity-75">
+                June 2023 – Present
+              </div>
+              <article class="text-sm opacity-90 pt-1 italic">
+                A Zarei, K Rezaei, S Basu, M Saberi, M Moayeri, P Kattakinda, S Feizi
+              </article>
+            </li>
+          </ul>
+        )}
+        <p class="text-sm">
+          These papers and more can be found on my <Link href={SOCIALS.find(s => s.NAME === "google-scholar")?.HREF || "#"} external>Google Scholar</Link>.
+        </p>
       </section>
 
       <!-- Work Experience Section -->
