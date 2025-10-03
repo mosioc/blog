@@ -20,7 +20,7 @@ astro-nano/
 │       ├── blog.schema.json
 │       ├── projects.schema.json
 │       └── work.schema.json
-├── src/                    # Source code (components, content, pages, styles, etc.)
+├── src/                    # Source code (components, content, pages, styles, configs, etc.)
 │   ├── consts.ts
 │   ├── env.d.ts
 │   ├── types.ts
