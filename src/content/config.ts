@@ -32,4 +32,24 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, work, projects };
+const education = defineCollection({
+  type: "content",
+  schema: z.object({
+    institution: z.string(),
+    degree: z.string(),
+    dateStart: z.coerce.date(),
+    dateEnd: z.union([z.coerce.date(), z.string()]).optional(),
+  }),
+});
+
+const research = defineCollection({
+  type: "content",
+  schema: z.object({
+    institution: z.string(),
+    role: z.string(),
+    dateStart: z.coerce.date(),
+    dateEnd: z.union([z.coerce.date(), z.string()]).optional(),
+  }),
+});
+
+export const collections = { blog, work, projects, education, research };

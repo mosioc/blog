@@ -9,19 +9,22 @@ import { SITE, HOME, SOCIALS } from "@consts";
 
 const baseUrl = import.meta.env.BASE_URL;
 
+// Blog posts
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
+// Projects
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
+// Work experience
 const allwork = (await getCollection("work"))
   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 
 const work = await Promise.all(
   allwork.map(async (item) => {
@@ -30,34 +33,33 @@ const work = await Promise.all(
   })
 );
 
-// Get education entries (with fallback data)
-const alleducation = (await getCollection("education").catch(() => []))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
-
+// Education collection
+const alleducation = await getCollection("education");
 const education = await Promise.all(
-  alleducation.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
+  alleducation
+    .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+    .map(async (item) => {
+      const { Content } = await item.render();
+      return { ...item, Content };
+    })
 );
 
-// Get research entries (with fallback data)
-const allresearch = (await getCollection("research").catch(() => []))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
-
+// Research collection
+const allresearch = await getCollection("research");
 const research = await Promise.all(
-  allresearch.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
+  allresearch
+    .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+    .map(async (item) => {
+      const { Content } = await item.render();
+      return { ...item, Content };
+    })
 );
-
 ---
 
-{// default title: {HOME.TITLE} }
 <PageLayout title="Mosioc" description={HOME.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
+
       <!-- Header Section -->
       <section class="animate">
         <h1 class="font-bold text-3xl text-black dark:text-white mb-2">
@@ -357,6 +359,7 @@ const research = await Promise.all(
           </li>
         </ul>
       </section>
+
     </div>
   </Container>
 </PageLayout>
