@@ -6,7 +6,7 @@ demoURL: "https://dashlytics-dashboard.vercel.app/"
 repoURL: "https://github.com/mosioc/dashlytics-dashboard"
 ---
 
-![Dashlytics Screenshot](/public/projects/dashlytics.png)
+![Dashlytics Screenshot](../../../../public/projects/dashlytics.png)
 
 **Dashlytics** is a professional CRM dashboard built to showcase **full-stack development skills**, modern frontend frameworks, and real-time data handling. It demonstrates expertise in **React, TypeScript, GraphQL, real-time subscriptions, and UI design** with Ant Design.
 

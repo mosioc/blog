@@ -6,7 +6,7 @@ demoURL: "https://monorepo-cinemark.vercel.app/"
 repoURL: "https://github.com/mosioc/monorepo-cinemark"
 ---
 
-![Cinemark Screenshot](/public/projects/cinemark.png)
+![Cinemark Screenshot](../../../../public/projects/cinemark.png)
 
 Cinemark is a modern full-stack movie library and purchasing platform. It demonstrates expertise in **Next.js**, **React**, **TypeScript**, and full-stack application architecture. Users can browse, search, and purchase movies, while admins manage the catalog, users, and analytics.
 
