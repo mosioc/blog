@@ -1,79 +1,34 @@
 ---
-title: "Mehdi Maleki"
-description: "Minimal portfolio and blog build with astro and no frameworks."
-date: "Mar. 26 2024"
-demoURL: "https://astro-nano-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-nano"
+title: "Dashlytics"
+description: "A modern CRM dashboard demonstrating React, TypeScript, and full-stack skills."
+date: "Oct 25 2025"
+demoURL: "https://dashlytics-dashboard.vercel.app/"
+repoURL: "https://github.com/mosioc/dashlytics-dashboard"
 ---
 
-![Astro Nano](/astro-nano.png)
+![Dashlytics Screenshot](/public/projects/dashlytics.png)
 
-Astro Nano is a static, minimalist, lightweight, lightning fast portfolio and blog theme.
+**Dashlytics** is a professional CRM dashboard built to showcase **full-stack development skills**, modern frontend frameworks, and real-time data handling. It demonstrates expertise in **React, TypeScript, GraphQL, real-time subscriptions, and UI design** with Ant Design.
 
-Built with Astro, Tailwind and Typescript, an no frameworks.
+## 🌟 Key Highlights
 
-It was designed as an even more minimal theme than my popular theme [Astro Sphere](https://github.com/markhorn-dev/astro-sphere)
+* **Real-Time Analytics**: Interactive dashboards and charts updating live with WebSocket subscriptions.
+* **Company & Contact Management**: Create, edit, and manage companies and contacts with advanced filtering and search.
+* **Professional UI/UX**: Responsive layout, Ant Design components, and command palette navigation.
+* **Authentication & Security**: Secure login, token-based sessions, and role-based access control.
+* **Type-Safe Development**: Full TypeScript coverage with generated GraphQL types.
+* **Performance & Optimization**: Efficient data fetching, pagination, and responsive rendering.
 
-## 🚀 Deploy your own
+## 🛠 Skills Demonstrated
 
-<div class="flex gap-2">
-  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano">
-    <img src="/blog/deploy_vercel.svg" />
-  </a>
-  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano">
-    <img src="/blog/deploy_netlify.svg" />
-  </a>
-</div>
+* **Frontend**: React (19.1), TypeScript (5.8), Ant Design, responsive design
+* **Backend & Data**: GraphQL, WebSocket subscriptions, Refine framework
+* **Development Practices**: Type safety, code generation, component-based architecture
+* **UI/UX Design**: Dashboard design, charts, notifications, and forms
+* **Deployment & DevOps**: Docker containerization, environment management
 
-## 📋 Features
+## 🔗 Explore
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
+* **Live Demo**: [View Dashlytics](https://dashlytics-dashboard.vercel.app/)
+* **Source Code**: [GitHub Repository](https://github.com/mosioc/dashlytics-dashboard)
 
-## 💯 Lighthouse score
-![Astro Nano Lighthouse Score](/lighthouse.png)
-
-## 🕊️ Lightweight
-No frameworks or added bulk
-
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
-
-## 📄 Configuration
-
-The blog posts on the demo serve as the documentation and configuration.
-
-## 💻 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run dev:network`     | Starts local dev server on local network         |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run preview:network` | Preview build on local network                   |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
-
-## 🏛️ License
-
-MIT

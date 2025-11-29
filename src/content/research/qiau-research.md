@@ -8,4 +8,4 @@ dateEnd: 2025-06-01
 - Research Assistant - Operating Systems - Prof. Azadeh Pourkabirian - Winter 2024
 
 #### Teaching
-- Teaching Assistant - Operating Systems - Prof. Azadeh Pourkabirian - Winter 2024
+- Teaching Assistant - Advanced Programming - Dr. Javad Ahmadi - Winter 2023

@@ -46,6 +46,6 @@ export const SOCIALS: Socials = [
   },
   {
     NAME: "google-scholar",
-    HREF: "https://scholar.google.com/citations?user=",
+    HREF: "https://scholar.google.com/citations?user=OEQZ5u4AAAAJ&hl=en",
   },
 ];

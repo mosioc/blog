@@ -1,76 +1,44 @@
 ---
-title: "Astro Sphere"
-description: "Portfolio and blog build with astro."
-date: "Mar 18 2024"
-demoURL: "https://astro-sphere-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-sphere"
+title: "Cinemark"
+description: "Showcasing a full-stack movie streaming platform built with Next.js."
+date: "Nov 30 2025"
+demoURL: "https://monorepo-cinemark.vercel.app/"
+repoURL: "https://github.com/mosioc/monorepo-cinemark"
 ---
 
-![Astro Sphere Lighthouse Score](/astro-sphere.jpg)
+![Cinemark Screenshot](/public/projects/cinemark.png)
 
-Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on my personal website.
+Cinemark is a modern full-stack movie library and purchasing platform. It demonstrates expertise in **Next.js**, **React**, **TypeScript**, and full-stack application architecture. Users can browse, search, and purchase movies, while admins manage the catalog, users, and analytics.
 
-It is primarily Astro, Tailwind and Typescript, with a very small amount of SolidJS for stateful components.
+## 🌟 Key Highlights
 
-## 🚀 Deploy your own
+* **Full-Stack Skills**: Next.js App Router, server components, server actions, PostgreSQL database integration.
+* **Authentication & Security**: NextAuth v5 with role-based access, rate limiting, and session management.
+* **Modern React Patterns**: Hooks, form handling with React Hook Form, and reusable UI components.
+* **Admin & User Workflows**: Separate dashboards for users and admins with analytics and movie management.
+* **Optimized Performance**: Redis caching, ImageKit integration for fast image delivery, and server-side rendering.
+* **Type Safety & Validation**: Complete TypeScript implementation with Zod for schema validation.
+* **Testing & Quality**: Comprehensive test coverage using Jest and React Testing Library.
+* **Workflow Automation**: Email automation using Upstash QStash and Resend.
 
-<div class="flex gap-2">
-  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/blog/deploy_vercel.svg" />
-  </a>
-  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-sphere">
-    <img src="/blog/deploy_netlify.svg" />
-  </a>
-</div>
+## 🏗️ Skills Demonstrated
 
-## 📋 Features
+* Designing scalable **full-stack web applications**
+* Implementing **secure authentication systems**
+* Building **responsive and interactive UIs** with TailwindCSS and Radix UI
+* Database design with **Drizzle ORM** and PostgreSQL
+* Automating workflows and integrating third-party services
+* Writing maintainable, **type-safe TypeScript code**
+* Conducting **unit and integration testing** for reliability
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
-- ✅ Searchable content (posts and projects)
+## 🎯 Technologies Used
 
-## 💯 Lighthouse score
-![Astro Sphere Lighthouse Score](/lighthouse.png)
+* **Frontend**: Next.js 16, React 19, TailwindCSS 4, Radix UI, Lucide Icons
+* **Backend**: NextAuth v5, Drizzle ORM, PostgreSQL, Redis, Upstash QStash, Resend
+* **Testing & Tooling**: Jest, React Testing Library, ESLint, TypeScript
+* **Media & Optimization**: ImageKit
 
-## 🕊️ Lightweight
-All pages under 100kb (including fonts)
+## 🔗 Links
 
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
-
-## 📄 Configuration
-
-The blog posts on the demo serve as the documentation and configuration.
-
-## 💻 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
-
-## 🏛️ License
-
-MIT
+* [Live Demo](https://monorepo-cinemark.vercel.app/)
+* [GitHub Repository](https://github.com/mosioc/monorepo-cinemark)
