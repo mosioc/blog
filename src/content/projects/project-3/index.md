@@ -6,7 +6,7 @@ demoURL: "https://mosioc.github.io/mc-ai-text-adventure-game/"
 repoURL: "https://github.com/mosioc/mc-ai-text-adventure-game"
 ---
 
-![mc AI Terminal Screenshot](/public/projects/mcai.png)
+![mc AI Terminal Screenshot](../../../../public/projects/mcai.png)
 
 **mc.AI Terminal - Oracle Pathways** is a cyberpunk-themed text adventure game built with **vanilla JavaScript**, featuring an **AI-powered narrator** and centralized text management system. This project demonstrates interactive storytelling, dynamic UI management, and integration of AI for real-time narrative responses.
 
