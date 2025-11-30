@@ -1,7 +1,7 @@
 ---
 company: "Alpha Co"
 role: "Frontend Developer"
-dateStart: "01/11/2024"
+dateStart: "02/04/2024"
 dateEnd: "2/10/2025"
 ---
 
