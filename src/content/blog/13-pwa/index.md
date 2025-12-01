@@ -1,6 +1,6 @@
 ---
 title: "How to Build Offline-First Apps (PWA in 2025)"
-description: "Let's talk about state management."
+description: "Offline? No problem."
 date: "12/2/2025"
 draft: false
 ---
