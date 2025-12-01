@@ -1,8 +1,8 @@
 ---
 company: "Alpha Co"
 role: "Frontend Developer"
-dateStart: "02/04/2024"
-dateEnd: "2/10/2025"
+dateStart: "02/01/2025"
+dateEnd: "10/20/2025"
 ---
 
-Building high-performance web apps with pure JavaScript and optimizing integrations with C++ backend systems.
+ Built high-performance web applications using pure JavaScript and optimized integrations with C++ backend systems. Experienced with Intro.js, Parallax.js, Swiper.js, and other JavaScript libraries.
