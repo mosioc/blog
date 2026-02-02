@@ -6,95 +6,113 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
-import { Image } from 'astro:assets';
-import profileImg from '/mehdi-maleki-2021.jpg'; 
+import { Image } from "astro:assets";
+import profileImg from "/mehdi-maleki-2021.jpg";
 
 const baseUrl = import.meta.env.BASE_URL;
 
 // Blog posts
 const blog = (await getCollection("blog"))
-.filter(post => !post.data.draft)
-.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-.slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
 // Projects
 const projects = (await getCollection("projects"))
-.filter(project => !project.data.draft)
-.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-.slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 // Work experience
 const allwork = (await getCollection("work"))
-.sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-.slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+  .sort(
+    (a, b) =>
+      new Date(b.data.dateStart).valueOf() -
+      new Date(a.data.dateStart).valueOf(),
+  )
+  .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
 
 const work = await Promise.all(
-allwork.map(async (item) => {
-const { Content } = await item.render();
-return { ...item, Content };
-})
+  allwork.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  }),
 );
-
 
 // Education collection
 const alleducation = await getCollection("education");
 const education = await Promise.all(
-alleducation
-.sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-.map(async (item) => {
-const { Content } = await item.render();
-return { ...item, Content };
-})
+  alleducation
+    .sort(
+      (a, b) =>
+        new Date(b.data.dateStart).valueOf() -
+        new Date(a.data.dateStart).valueOf(),
+    )
+    .map(async (item) => {
+      const { Content } = await item.render();
+      return { ...item, Content };
+    }),
 );
 
 // Research collection
 const allresearch = await getCollection("research");
 const research = await Promise.all(
-allresearch
-.sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-.map(async (item) => {
-const { Content } = await item.render();
-return { ...item, Content };
-})
+  allresearch
+    .sort(
+      (a, b) =>
+        new Date(b.data.dateStart).valueOf() -
+        new Date(a.data.dateStart).valueOf(),
+    )
+    .map(async (item) => {
+      const { Content } = await item.render();
+      return { ...item, Content };
+    }),
 );
 
 // Publications collection
 const publications = await Promise.all(
-(await getCollection("publications"))
-.sort((a, b) => b.data.status.localeCompare(a.data.status)) // Sort by status (e.g., Under Review first, then dates)
-.map(async (item) => {
-const { Content } = await item.render();
-return { ...item, Content };
-})
+  (await getCollection("publications"))
+    .sort((a, b) => b.data.status.localeCompare(a.data.status)) // Sort by status (e.g., Under Review first, then dates)
+    .map(async (item) => {
+      const { Content } = await item.render();
+      return { ...item, Content };
+    }),
 );
 ---
 
 <PageLayout title={SITE.NAME} description={HOME.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-
+    <div class="space-y-6">
       <!-- Header Section -->
-      <section class="animate flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-6">
-        <Image src={profileImg} alt="Mehdi Maleki"
-          class="w-24 h-24 rounded-full object-cover shadow-lg mx-auto sm:mx-0" loading="lazy"/>
+      <section
+        class="animate flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-6"
+      >
+        <Image
+          src={profileImg}
+          alt="Mehdi Maleki"
+          class="w-24 h-24 rounded-full object-cover shadow-lg mx-auto sm:mx-0"
+          loading="lazy"
+        />
         <div class="flex-1 text-center sm:text-left">
           <h1 class="font-bold text-3xl text-black dark:text-white mb-2">
             Mehdi Maleki
           </h1>
-          <p class="text-lg opacity-75 mb-4">
+          <p class="text-lg opacity-75">
             Developer, Computer Science Enthusiast | AI & Design Passionate
           </p>
           <article class="space-y-3">
             <p>
-              Computer science enthusiast passionate about AI, Design and building interactive tech experiences.
-              I love exploring innovative solutions, optimizing code, and sharing insights through projects
+              Computer science enthusiast passionate about AI, Design and
+              building interactive tech experiences. I love exploring innovative
+              solutions, optimizing code, and sharing insights through projects
               and articles that bridge human and technology.
             </p>
           </article>
         </div>
       </section>
 
-{/*
+      {
+        /*
       <!-- Education Section -->
       <section class="animate space-y-4">
         <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
@@ -148,8 +166,10 @@ return { ...item, Content };
         </ul>
         )}
       </section>
-*/}
-{/*
+*/
+      }
+      {
+        /*
 
       <!-- Interests Section -->
       <section class="animate space-y-4">
@@ -165,9 +185,11 @@ return { ...item, Content };
         </article>
       </section>
 
-*/}
+*/
+      }
 
-{/*
+      {
+        /*
       <!-- Research & Teaching Experience Section -->
       <section class="animate space-y-4">
         <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
@@ -234,9 +256,11 @@ return { ...item, Content };
         </ul>
         )}
       </section>
-*/}
+*/
+      }
 
-{/*
+      {
+        /*
       <!-- Publications Section -->
       <section class="animate space-y-4">
         <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
@@ -291,160 +315,178 @@ return { ...item, Content };
           <Link href={SOCIALS.find(s=> s.NAME === "google-scholar")?.HREF || "#"} external>Google Scholar</Link>.
         </p>
       </section>
-*/}      
+*/
+      }
 
       <!-- Work Experience Section -->
       <section class="animate space-y-4">
-        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+        <div
+          class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-0"
+        >
           <h2 class="font-bold text-xl text-black dark:text-white">
             Work Experience
           </h2>
-          <Link href={`${baseUrl}work/`} class="text-sm">
-          See all
-          </Link>
+          <Link href={`${baseUrl}work/`} class="text-sm"> See all </Link>
         </div>
-        {work.length > 0 ? (
-        <ul class="space-y-6">
-          {work.map(entry => (
-          <li class="space-y-1">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <div class="font-semibold text-black dark:text-white">
-                  {entry.data.company}
+
+        {
+          work.length > 0 ? (
+            <ul class="">
+              {work.map((entry) => (
+                <li class="space-y-1 mb-3">
+                  <div class="flex items-start justify-between gap-2">
+                    <div class="flex-1">
+                      <div class="font-semibold text-black dark:text-white">
+                        {entry.data.company}
+                      </div>
+                      <div class="text-sm opacity-75">{entry.data.role}</div>
+                    </div>
+                    <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                      {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                    </div>
+                  </div>
+                  <article class="text-sm opacity-90 pt-0">
+                    <entry.Content />
+                  </article>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ul class="space-y-1">
+              <li class="space-y-1">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="flex-1">
+                    <div class="font-semibold text-black dark:text-white">
+                      Alpha Co.
+                    </div>
+                    <div class="text-sm opacity-75">Co-Founder</div>
+                  </div>
+                  <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                    Feb 2025 – Present
+                  </div>
                 </div>
-                <div class="text-sm opacity-75">
-                  {entry.data.role}
+                <article class="text-sm opacity-90 pt-0">
+                  <ul class="list-disc list-inside space-y-1">
+                    <li>
+                      Co-founded startup specializing in adjustable dipping
+                      containers, optimizing buffalo wing dining experience.
+                    </li>
+                    <li>
+                      Developed minimum viable product (MVP) capable of
+                      early-stage revenue generation.
+                    </li>
+                    <li>
+                      Received positive feedback from established brands like
+                      Buffalo Wild Wings for innovative sauce holder designs.
+                    </li>
+                  </ul>
+                </article>
+              </li>
+              <li class="space-y-1">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex-1">
+                    <div class="font-semibold text-black dark:text-white">
+                      Private Math Tutor
+                    </div>
+                    <div class="text-sm opacity-75">Team Captain</div>
+                  </div>
+                  <div class="text-sm opacity-75 text-right whitespace-nowrap">
+                    Sept. 2021 – Present
+                  </div>
                 </div>
-              </div>
-              <div class="text-sm opacity-75 text-right whitespace-nowrap">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-            </div>
-            <article class="text-sm opacity-90 pt-1">
-              <entry.Content />
-            </article>
-          </li>
-          ))}
-        </ul>
-        ) : (
-        <ul class="space-y-6">
-          <li class="space-y-1">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <div class="font-semibold text-black dark:text-white">
-                  Alpha Co.
-                </div>
-                <div class="text-sm opacity-75">
-                  Co-Founder
-                </div>
-              </div>
-              <div class="text-sm opacity-75 text-right whitespace-nowrap">
-                Feb 2025 – Present
-              </div>
-            </div>
-            <article class="text-sm opacity-90 pt-1">
-              <ul class="list-disc list-inside space-y-1">
-                <li>Co-founded startup specializing in adjustable dipping containers, optimizing buffalo wing dining
-                  experience.</li>
-                <li>Developed minimum viable product (MVP) capable of early-stage revenue generation.</li>
-                <li>Received positive feedback from established brands like Buffalo Wild Wings for innovative sauce
-                  holder designs.</li>
-              </ul>
-            </article>
-          </li>
-          <li class="space-y-1">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <div class="font-semibold text-black dark:text-white">
-                  Private Math Tutor
-                </div>
-                <div class="text-sm opacity-75">
-                  Team Captain
-                </div>
-              </div>
-              <div class="text-sm opacity-75 text-right whitespace-nowrap">
-                Sept. 2021 – Present
-              </div>
-            </div>
-            <article class="text-sm opacity-90 pt-1">
-              <ul class="list-disc list-inside space-y-1">
-                <li>Provided personalized tutoring sessions in algebra, calculus, and geometry to elementary &
-                  middle-school students.</li>
-                <li>Developed lesson plans for diverse learning styles, leading to improvements by upwards of 1.5 letter
-                  grades.</li>
-              </ul>
-            </article>
-          </li>
-        </ul>
-        )}
+                <article class="text-sm opacity-90 pt-1">
+                  <ul class="list-disc list-inside space-y-1">
+                    <li>
+                      Provided personalized tutoring sessions in algebra,
+                      calculus, and geometry to elementary & middle-school
+                      students.
+                    </li>
+                    <li>
+                      Developed lesson plans for diverse learning styles,
+                      leading to improvements by upwards of 1.5 letter grades.
+                    </li>
+                  </ul>
+                </article>
+              </li>
+            </ul>
+          )
+        }
       </section>
 
       <!-- Projects Section -->
       <section class="animate space-y-4">
-        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
-          <h2 class="font-bold text-xl text-black dark:text-white">
-            Projects
-          </h2>
-          <Link href={`${baseUrl}projects/`} class="text-sm">
-          See all
-          </Link>
+        <div
+          class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2"
+        >
+          <h2 class="font-bold text-xl text-black dark:text-white">Projects</h2>
+          <Link href={`${baseUrl}projects/`} class="text-sm"> See all </Link>
         </div>
         <ul class="flex flex-col gap-3">
-          {projects.map(project => (
-          <li>
-            <ArrowCard entry={project} />
-          </li>
-          ))}
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
         </ul>
       </section>
 
       <!-- Blog Posts Section -->
       <section class="animate space-y-4">
-        <div class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2">
+        <div
+          class="flex items-center justify-between border-b border-black/10 dark:border-white/25 pb-2"
+        >
           <h2 class="font-bold text-xl text-black dark:text-white">
             Latest Posts
           </h2>
-          <Link href={`${baseUrl}blog/`} class="text-sm">
-          See all
-          </Link>
+          <Link href={`${baseUrl}blog/`} class="text-sm"> See all </Link>
         </div>
         <ul class="flex flex-col gap-3">
-          {blog.map(post => (
-          <li>
-            <ArrowCard entry={post} />
-          </li>
-          ))}
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
         </ul>
       </section>
 
       <!-- Contact Section -->
-      <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Connect
-        </h5>
+      <section class="animate space-y-2">
+        <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
         <article>
           <p>
-            If you want to get in touch with me about something or just to say hi,
-            reach out on social media or send me an email.
+            If you want to get in touch with me about something or just to say
+            hi, reach out on social media or send me an email.
           </p>
         </article>
         <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-          <li class="flex gap-x-2 text-nowrap">
-            <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-            {SOCIAL.NAME}
-            </Link>
-            {"/"}
-          </li>
-          ))}
+          {
+            SOCIALS.map((SOCIAL) => (
+              <li class="flex gap-x-2 text-nowrap">
+                <Link
+                  href={SOCIAL.HREF}
+                  external
+                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                >
+                  {SOCIAL.NAME}
+                </Link>
+                {"/"}
+              </li>
+            ))
+          }
           <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-            {SITE.EMAIL}
+            <Link
+              href={`mailto:${SITE.EMAIL}`}
+              aria-label={`Email ${SITE.NAME}`}
+            >
+              {SITE.EMAIL}
             </Link>
           </li>
         </ul>
       </section>
-
     </div>
   </Container>
 </PageLayout>

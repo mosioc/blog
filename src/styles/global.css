@@ -30,7 +30,7 @@ header {
 }
 
 main {
-  @apply flex-1 py-32;
+  @apply flex-1 py-20;
 }
 
 footer {
@@ -41,6 +41,7 @@ article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold prose-p:font-serif;
   @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply [&>p]:my-1 [&>p]:mb-1 [&>p>img]:mb-2 [&>ol>li]:mt-0 [&>li]:space-y-0 [&>ol>li>p]:mt-0 [&>ol>li>p]:mb-0 [&>:is(h2,h3,h4,h5,h6)]:mt-2 [&>:is(h2,h3,h4,h5,h6)]:mb-2 [&>hr]:mt-2 [&>hr]:mb-2;
 }
 
 @layer utilities {
@@ -65,7 +66,6 @@ article {
   } */
 
   @keyframes gradient-shift {
-
     0%,
     100% {
       @apply bg-[position:0%_50%];
@@ -75,7 +75,6 @@ article {
       @apply bg-[position:100%_50%];
     }
   }
-
 }
 
 .animate {
