@@ -146,7 +146,7 @@ openclaw channels login
 
 ### Discord
 
-1. Go to Discord Developer Portal: <https://discord.com/developers/applications>
+1. [Go to Discord Developer Portal](https://discord.com/developers/applications)
 2. Click "New Application"
 3. Name it (e.g., "OpenClaw Bot")
 4. Go to "Bot" section and click "Add Bot"
@@ -562,13 +562,13 @@ First response might be slower (5-10 seconds) as the model loads into memory. Su
 
 **Recommended Ollama Models for OpenClaw (February 2026):**
 
-| Model | Size | VRAM | Use Case | Speed |
-|-------|------|------|----------|-------|
-| qwen2.5-coder:32b | 19 GB | 20 GB | Best tool calling | Medium |
-| deepseek-r1:32b | 19 GB | 20 GB | Strong reasoning | Medium |
-| llama3.3:70b | 40 GB | 48 GB | Most capable | Slow |
-| qwen3:8b | 4.7 GB | 6 GB | Lightweight | Fast |
-| mistral:7b | 4.1 GB | 5 GB | Good balance | Fast |
+| Model | Size | VRAM | Use Case |
+|-------|------|------|----------|
+| qwen2.5-coder:32b | 19 GB | 20 GB | Best tool calling |
+| deepseek-r1:32b | 19 GB | 20 GB | Strong reasoning |
+| llama3.3:70b | 40 GB | 48 GB | Most capable |
+| qwen3:8b | 4.7 GB | 6 GB | Lightweight |
+| mistral:7b | 4.1 GB | 5 GB | Good balance |
 
 **Performance Tips:**
 
@@ -679,8 +679,13 @@ Use Task Scheduler:
 2. Create Basic Task
 3. Trigger: At log on
 4. Action: Start a program
-5. Program: `C:\Users\YourName\AppData\Local\Programs\Ollama\ollama.exe`
-6. Arguments: `serve`
+5. Program:
+
+```txt
+C:\Users\YourName\AppData\Local\Programs\Ollama\ollama.exe
+```
+
+1. Arguments: `serve`
 
 **Cost Reality:**
 
@@ -1911,8 +1916,8 @@ Just run it on a separate machine.
 
 **Resources:**
 
-- Docs: <https://docs.openclaw.ai>
-- Skills: <https://clawhub.com>
-- GitHub: <https://github.com/openclaw/openclaw>
-- Community: <https://discord.gg/openclaw>
-- Security: <https://docs.openclaw.ai/security>
+- [Docs](https://docs.openclaw.ai)
+- [Skills](https://clawhub.com)
+- [GitHub](https://github.com/openclaw/openclaw)
+- [Community](https://discord.gg/openclaw)
+- [Security](https://docs.openclaw.ai/security)
