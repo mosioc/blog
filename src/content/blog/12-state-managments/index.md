@@ -66,6 +66,7 @@ Zustand's architecture is simpler than Redux: when a change request comes in, it
 ### When to Use Zustand
 
 **Ideal For:**
+
 - Small to medium-sized applications
 - Projects requiring minimal setup overhead
 - Performance-critical applications
@@ -73,6 +74,7 @@ Zustand's architecture is simpler than Redux: when a change request comes in, it
 - Teams wanting simple, intuitive APIs
 
 **Consider Alternatives If:**
+
 - You need extensive middleware ecosystem
 - Your team is already deeply invested in Redux patterns
 - You require time-travel debugging out of the box
@@ -116,6 +118,7 @@ Provides prebuilt reducers and selectors for CRUD operations on normalized state
 RTK Query is an optional addon that provides data fetching and caching capabilities, eliminating the need to hand-write data fetching logic.
 
 **RTK Query Features:**
+
 - Automatic request deduplication
 - Cache management
 - Loading state handling
@@ -146,6 +149,7 @@ RTK Query builds on top of Redux Toolkit's createSlice and createAsyncThunk APIs
 ### When to Use Redux Toolkit
 
 **Ideal For:**
+
 - Large-scale enterprise applications
 - Projects requiring predictable state management
 - Teams needing robust debugging tools (Redux DevTools)
@@ -153,6 +157,7 @@ RTK Query builds on top of Redux Toolkit's createSlice and createAsyncThunk APIs
 - Projects requiring middleware for side effects
 
 **Consider Alternatives If:**
+
 - You're building a small application
 - Your team finds the Redux mental model too complex
 - You need a more lightweight solution
@@ -238,6 +243,7 @@ For server-side rendering with frameworks like Next.js, a Jotai Provider compone
 ### When to Use Jotai
 
 **Ideal For:**
+
 - Applications requiring fine-grained reactivity
 - Projects where state should be close to components
 - TypeScript-first development
@@ -245,6 +251,7 @@ For server-side rendering with frameworks like Next.js, a Jotai Provider compone
 - Concurrent React features
 
 **Consider Alternatives If:**
+
 - Your team prefers centralized state stores
 - You need extensive debugging tools
 - The atomic mental model doesn't fit your use case
@@ -331,12 +338,14 @@ const userDataQuery = selector({
 ### When to Use Recoil
 
 **Ideal For:**
+
 - Applications with many interdependent components
 - Projects requiring complex derived state
 - Teams familiar with React patterns
 - Applications leveraging React's concurrent features
 
 **Consider Alternatives If:**
+
 - You need a mature ecosystem with extensive community support
 - Bundle size is a critical concern
 - You require production-ready stability
@@ -383,36 +392,42 @@ const userDataQuery = selector({
 ### Developer Experience
 
 **Learning Curve:**
+
 1. **Zustand** - Easiest (hours)
 2. **Jotai** - Easy-Moderate (days)
 3. **Recoil** - Moderate (days-week)
 4. **Redux Toolkit** - Moderate-Steep (week+)
 
 **TypeScript Support:**
+
 - All four libraries offer excellent TypeScript support
 - Jotai and Redux Toolkit are particularly TypeScript-oriented
 
 ### Ecosystem & Tooling
 
 **Redux Toolkit**:
+
 - Mature ecosystem with extensive middleware
 - Best-in-class DevTools
 - Comprehensive documentation
 - Large community
 
 **Zustand**:
+
 - Growing ecosystem
 - Middleware available but smaller selection
 - Strong community support
 - Simple, clear documentation
 
 **Jotai**:
+
 - Growing rapidly
 - Official integrations with popular tools
 - Active community
 - Excellent documentation
 
 **Recoil**:
+
 - Limited third-party ecosystem
 - Official DevTools available
 - Smaller community
@@ -422,28 +437,32 @@ const userDataQuery = selector({
 
 ## Decision Framework
 
-### Choose Redux Toolkit if:
+### Choose Redux Toolkit if
+
 - Building large-scale enterprise applications
 - Team needs predictable, structured state management
 - Extensive debugging capabilities are required
 - You need RTK Query for sophisticated data fetching
 - Your team has Redux experience or time to learn it
 
-### Choose Zustand if:
+### Choose Zustand if
+
 - Seeking minimal boilerplate and fast setup
 - Building small to medium applications
 - Performance is critical with minimal overhead
 - You want a simple mental model
 - No need for extensive middleware ecosystem
 
-### Choose Jotai if:
+### Choose Jotai if
+
 - Prefer atomic, distributed state
 - TypeScript is a priority
 - Need fine-grained reactivity
 - Want flexibility in state organization
 - Building with modern React features (Suspense, Concurrent)
 
-### Choose Recoil if:
+### Choose Recoil if
+
 - Working on a Facebook-ecosystem project
 - Need complex derived state with selectors
 - Comfortable with experimental technology
@@ -455,24 +474,31 @@ const userDataQuery = selector({
 ## Best Practices Across All Libraries
 
 ### 1. Separate Concerns
+
 Keep your state management logic separate from UI components. This improves testability and maintainability.
 
 ### 2. Avoid Over-Globalization
+
 Not all state needs to be global. Use local state (`useState`) for component-specific data.
 
 ### 3. Normalize Complex Data
+
 For data with relationships, normalize your state structure to avoid duplication and simplify updates.
 
 ### 4. Use Selectors/Derived State
+
 Compute derived values instead of storing them, reducing redundancy and potential inconsistencies.
 
 ### 5. TypeScript for Type Safety
+
 Leverage TypeScript to catch state-related bugs at compile time.
 
 ### 6. Performance Monitoring
+
 Use React DevTools and library-specific tools to identify unnecessary re-renders.
 
 ### 7. Code Splitting
+
 Split state management logic alongside component code for better bundle optimization.
 
 ---
@@ -480,15 +506,19 @@ Split state management logic alongside component code for better bundle optimiza
 ## Migration Considerations
 
 ### From Redux to Redux Toolkit
+
 The easiest migration path. Even for existing applications, it's recommended to switch createStore for configureStore and convert reducers to createSlice for shorter, easier-to-understand code.
 
 ### From Redux to Zustand/Jotai
+
 More substantial rewrite, but can be done incrementally by:
+
 1. Creating new stores/atoms for new features
 2. Gradually migrating existing Redux slices
 3. Maintaining both systems during transition
 
 ### From Context API
+
 Any of these libraries can replace Context API usage, with Zustand and Jotai offering the smoothest transitions due to their hook-based APIs.
 
 ---
@@ -533,22 +563,26 @@ Choose the tool that best fits your answers, and remember: the best state manage
 ## Additional Resources
 
 ### Redux Toolkit
-- Official Documentation: https://redux-toolkit.js.org/
-- RTK Query Guide: https://redux-toolkit.js.org/rtk-query/overview
-- GitHub: https://github.com/reduxjs/redux-toolkit
+
+- [Official Documentation](https://redux-toolkit.js.org/)
+- [RTK Query Guide](https://redux-toolkit.js.org/rtk-query/overview)
+- [GitHub](https://github.com/reduxjs/redux-toolkit)
 
 ### Zustand
-- Official Documentation: https://zustand.docs.pmnd.rs/
-- GitHub: https://github.com/pmndrs/zustand
-- Demo: https://zustand-demo.pmnd.rs/
+
+- [Official Documentation](https://zustand.docs.pmnd.rs/)
+- [GitHub](https://github.com/pmndrs/zustand)
+- [Demo](https://zustand-demo.pmnd.rs/)
 
 ### Jotai
-- Official Documentation: https://jotai.org/
-- GitHub: https://github.com/pmndrs/jotai
-- Extensions: https://jotai.org/docs/extensions/
+
+- [Official Documentation](https://jotai.org/)
+- [GitHub](https://github.com/pmndrs/jotai)
+- [Extensions](https://jotai.org/docs/extensions/)
 
 ### Recoil
-- Official Documentation: https://recoiljs.org/
-- GitHub: https://github.com/facebookexperimental/Recoil
+
+- [Official Documentation](https://recoiljs.org/)
+- [GitHub](https://github.com/facebookexperimental/Recoil)
 
 ---
